@@ -217,21 +217,33 @@ class _TimerScreenState extends State<TimerScreen> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Barra superior
-            _buildTopBar(),
-            
-            // Reloj central
-            Expanded(child: Center(child: _buildTimerDisplay(progress))),
-
-            // Botones inferiores
-            Padding(
-              padding: const EdgeInsets.only(bottom: 48.0),
-              child: _buildControlButtons(),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/poker_bg.png'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black54, // Oscurecer un poco para legibilidad
+              BlendMode.darken,
             ),
-          ],
+          ),
+        ),
+        child: SafeArea(
+          child: Column(
+            children: [
+              // Barra superior
+              _buildTopBar(),
+              
+              // Reloj central
+              Expanded(child: Center(child: _buildTimerDisplay(progress))),
+  
+              // Botones inferiores
+              Padding(
+                padding: const EdgeInsets.only(bottom: 48.0),
+                child: _buildControlButtons(),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -275,8 +287,8 @@ class _TimerScreenState extends State<TimerScreen> {
                 return CircularProgressIndicator(
                   value: value,
                   strokeWidth: 8,
-                  backgroundColor: Colors.grey[900],
-                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.cyanAccent),
+                  backgroundColor: Colors.white10,
+                  valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFFFD700)), // Oro
                 );
               },
             ),
@@ -284,11 +296,27 @@ class _TimerScreenState extends State<TimerScreen> {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(_formatTime(),
-                style: const TextStyle(fontSize: 90, fontWeight: FontWeight.w200, color: Colors.white, letterSpacing: -2)),
-              if (_currentSeconds >= 60)
-                Text('$_currentSeconds SEG TOTALES',
-                  style: const TextStyle(fontSize: 16, color: Colors.white38, letterSpacing: 2.0)),
+              Text(
+                _formatTime(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 84,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: -2,
+                  shadows: [
+                    Shadow(color: Colors.black, blurRadius: 20, offset: Offset(0, 4)),
+                  ],
+                ),
+              ),
+              const Text(
+                "TEMPORIZADOR",
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontSize: 14,
+                  letterSpacing: 4,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ],
@@ -302,15 +330,19 @@ class _TimerScreenState extends State<TimerScreen> {
       children: [
         FloatingActionButton(
           heroTag: 'reset',
-          backgroundColor: Colors.grey[800],
+          backgroundColor: Colors.black45,
           onPressed: _resetTimer,
-          child: const Icon(Icons.refresh_rounded, color: Colors.white, size: 32),
+          child: const Icon(Icons.refresh_rounded, color: Colors.white70, size: 32),
         ),
         FloatingActionButton(
           heroTag: 'play_pause',
-          backgroundColor: _isRunning ? Colors.amber : Colors.cyanAccent,
+          backgroundColor: _isRunning ? Colors.white24 : const Color(0xFFD40000), // Rojo Casino
           onPressed: _isRunning ? _pauseTimer : _startTimer,
-          child: Icon(_isRunning ? Icons.pause_rounded : Icons.play_arrow_rounded, color: Colors.black, size: 40),
+          child: Icon(
+            _isRunning ? Icons.pause_rounded : Icons.play_arrow_rounded,
+            color: _isRunning ? Colors.white : Colors.white,
+            size: 40,
+          ),
         ),
       ],
     );

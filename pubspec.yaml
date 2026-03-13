@@ -1,5 +1,5 @@
-name: android_full_screen_timer
-description: A full-screen countdown timer for Android with sound alerts.
+name: temporizador_poker
+description: Temporizador de Poker a Pantalla Completa.
 publish_to: 'none'
 version: 0.2.0+2
 
@@ -19,6 +19,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "assets/icon/app_icon.png"
+  min_sdk_android: 21
 
 flutter:
   uses-material-design: true
@@ -32,3 +38,4 @@ flutter:
     - assets/voice_2.mp3
     - assets/voice_1.mp3
     - assets/voice_termino.mp3
+    - assets/poker_bg.png
