@@ -1,0 +1,28 @@
+name: android_full_screen_timer
+description: A full-screen countdown timer for Android with sound alerts.
+publish_to: 'none'
+version: 0.2.0+2
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Para evitar que la pantalla se apague
+  wakelock_plus: ^1.1.4
+  # Para reproducir sonidos del sistema sin requerir assets extra
+  just_audio: ^0.9.42
+  shared_preferences: ^2.5.4
+  jbh_ringtone: ^1.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/beep.wav
+    - assets/alarm.wav

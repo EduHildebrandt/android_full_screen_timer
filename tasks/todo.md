@@ -1,0 +1,30 @@
+# Tareas / Todo: Temporizador Android
+
+- [x] Definir el Stack Tecnológico con el usuario (Flutter).
+- [x] Inicializar el repositorio / proyecto (Archivos base de Flutter).
+- [x] Configurar linters y formato de código básico (A cargo del CLI de Flutter).
+- [x] Implementar la interfaz visual básica del cronómetro.
+- [x] Implementar botones de control (Play, Pause, Reset).
+- [x] Implementar la lógica matemática del `Timer` con precisión.
+- [x] Integrar el reproductor de sonido (`flutter_ringtone_player`).
+- [x] Lógica condicional de sonidos (10s, y 5s-1s regresivos).
+- [x] Agregar el toggle para encendido y apagado del mute sonoro.
+- [x] Implementar "Keep Awake" / "Wake Lock" de Android (`wakelock_plus`).
+- [x] Auditar la aplicación — BUG corregido: TweenAnimationBuilder (begin==end). Ejecutar `flutter run` en Android físico.
+- [ ] Agregar Flutter al PATH permanente del sistema (`~/.bashrc`).
+- [x] Probar la app en celular Android físico (USB Debugging).
+- [x] Generar primer APK de lanzamiento (Release).
+- [x] [v1.1] Cambiar tiempo por defecto a 30s.
+- [x] [v1.1] Implementar auto-inicio al resetear.
+- [x] [v1.1] Verificar/Mejorar botón de pausa.
+- [x] [v1.2] Implementar selección de sonidos del sistema.
+- [x] [v1.2] Persistencia de sonidos elegidos usando `shared_preferences`.
+- [x] [v1.2] Integrar `audioplayers` (Migrado a `just_audio` en v0.2).
+- [x] [v0.2] Solucionar error "Unable to create media player" (Files generated via Python).
+- [x] [v0.2] Implementar sonidos de respaldo .wav (Assets fallback).
+- [x] [v0.2] Migración a `just_audio` por estabilidad en Android 13+.
+- [x] [v0.2] Generar APK de lanzamiento.
+- [ ] [v0.3] Corregir bug al cambiar sonidos (fuga de memoria y persistencia).
+- [ ] [v0.3] Refactorizar la lógica de audio en un componente separado.
+- [ ] [v0.3] Documentar el código extensamente en español (Clean Code).
+- [ ] [v0.3] Inicializar Git y subir a GitHub.
