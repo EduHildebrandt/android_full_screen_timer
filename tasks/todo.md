@@ -35,3 +35,4 @@
 - [x] Eliminar soporte viejo de Ringtone nativo (`jbh_ringtone`).
 - [x] Actualizar `SoundController` para que mapee dinámicamente según el segundo restante a los distintos MP3.
 - [x] Unificar la alarma chillona reproduciédose antes de "termino el tiempo".
+- [x] **[Android Only]** Eliminar plataformas nativas sobrantes (`ios`, `macos`, `windows`, `linux`, `web`) e integraciones innecesarias, optimizando la app sólo para Android.
