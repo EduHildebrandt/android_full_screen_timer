@@ -33,6 +33,11 @@
 - **Refactorización**: Modularizar lógica de audio y mejorar comentarios.
 - **GitHub Sync**: Push al repositorio oficial.
 
+## 6. Actualizaciones v0.4 (Actual)
+- **Voces Customizadas**: Generar audios específicos en español (voz gruesa y neutra) para "10 segundos", "5..1", y "terminó el tiempo".
+- **Simplificación de Selectores**: Remover el selector nativo de ringtones y forzar las voces personalizadas para mejor UX y estabilidad.
+
 ## Revisión y Resolución (Auto-Healed)
 - [v1.1] Implementado auto-reinicio y cambio de default. UX mejorada para sesiones repetitivas.
 - [v0.3] Implementada corrección de cambio de sonidos y refactorización completa.
+- [v0.4] [Auto-Healed] Interfaces limpiadas, voces generadas e inyectadas dinámicamente.

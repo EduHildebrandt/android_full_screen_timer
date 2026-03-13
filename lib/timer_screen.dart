@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'sound_controller.dart';
-import 'package:jbh_ringtone/jbh_ringtone.dart';
 
 /// Pantalla principal del Temporizador.
 /// Muestra un contador circular y controles de tiempo.
@@ -83,9 +82,9 @@ class _TimerScreenState extends State<TimerScreen> {
 
       // Disparadores de sonido
       if (_currentSeconds == 10) {
-        _soundController.playBeep();
+        _soundController.playVoice('voice_10.mp3');
       } else if (_currentSeconds <= 5 && _currentSeconds >= 1) {
-        _soundController.playBeep();
+        _soundController.playVoice('voice_$_currentSeconds.mp3');
       } else if (_currentSeconds == 0) {
         // Alarma final de 3 toques
         _soundController.playFinalAlarm(() => _currentSeconds == 0);
@@ -150,34 +149,13 @@ class _TimerScreenState extends State<TimerScreen> {
                   
                   const Divider(color: Colors.white10),
                   
-                  // Selección de Sonido Intermedio
-                  _buildSettingTile(
-                    title: 'Sonido Intermedio',
-                    subtitle: _soundController.beepName,
-                    onTap: () async {
-                      final selected = await _showSoundPicker('Notificaciones');
-                      if (selected != null) {
-                        _soundController.setSelectedSound('Notificaciones', selected);
-                        setModalState(() {});
-                        setState(() {});
-                      }
-                    },
-                  ),
-
-                  const Divider(color: Colors.white10),
-                  
-                  // Selección de Alarma Final
-                  _buildSettingTile(
-                    title: 'Alarma Final',
-                    subtitle: _soundController.alarmName,
-                    onTap: () async {
-                      final selected = await _showSoundPicker('Alarmas');
-                      if (selected != null) {
-                        _soundController.setSelectedSound('Alarmas', selected);
-                        setModalState(() {});
-                        setState(() {});
-                      }
-                    },
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16.0),
+                    child: Text(
+                      'Modo Voz Activo:\nTe avisaremos a los 10 segundos, últimos 5 segundos, y al finalizar.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white54, fontSize: 14),
+                    ),
                   ),
 
                   const SizedBox(height: 32),
@@ -191,52 +169,6 @@ class _TimerScreenState extends State<TimerScreen> {
         );
       },
     );
-  }
-
-  /// Diálogo selector de sonidos del sistema
-  Future<JbhRingtoneModel?> _showSoundPicker(String type) async {
-    final sounds = await _soundController.getSystemSounds(type);
-    if (!mounted) return null;
-
-    return await showModalBottomSheet<JbhRingtoneModel>(
-      context: context,
-      backgroundColor: Colors.grey[900],
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(32))),
-      builder: (context) {
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 24),
-          child: Column(
-            children: [
-              Text('Seleccionar $type', style: const TextStyle(color: Colors.white, fontSize: 20)),
-              const SizedBox(height: 16),
-              if (sounds.isEmpty)
-                const Expanded(child: Center(child: Text('No se encontraron sonidos', style: TextStyle(color: Colors.white38))))
-              else
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: sounds.length,
-                    itemBuilder: (context, index) {
-                      final sound = sounds[index];
-                      return ListTile(
-                        title: Text(sound.title, style: const TextStyle(color: Colors.white)),
-                        leading: const Icon(Icons.music_note, color: Colors.white38),
-                        onTap: () => _soundController.playPreview(sound.uri),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.check_circle_outline, color: Colors.cyanAccent),
-                          onPressed: () {
-                            _soundController.stopPreview();
-                            Navigator.pop(context, sound);
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                ),
-            ],
-          ),
-        );
-      },
-    ).whenComplete(() => _soundController.stopPreview()); // Garantiza detener preview al cerrar
   }
 
   // --- Helpers de UI ---

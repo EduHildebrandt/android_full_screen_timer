@@ -24,7 +24,14 @@
 - [x] [v0.2] Implementar sonidos de respaldo .wav (Assets fallback).
 - [x] [v0.2] Migración a `just_audio` por estabilidad en Android 13+.
 - [x] [v0.2] Generar APK de lanzamiento.
-- [ ] [v0.3] Corregir bug al cambiar sonidos (fuga de memoria y persistencia).
-- [ ] [v0.3] Refactorizar la lógica de audio en un componente separado.
-- [ ] [v0.3] Documentar el código extensamente en español (Clean Code).
-- [ ] [v0.3] Inicializar Git y subir a GitHub.
+- [x] [v0.3] Corregir bug al cambiar sonidos (fuga de memoria y persistencia).
+- [x] [v0.3] Refactorizar la lógica de audio en un componente separado.
+- [x] [v0.3] Documentar el código extensamente en español (Clean Code).
+- [x] [v0.3] Inicializar Git y subir a GitHub.
+
+## v0.4: Voces Personalizadas
+- [x] Generar audios con TTS (Edge-TTS) voz española gruesa/neutra (es-MX-JorgeNeural).
+- [x] Agregar los nuevos locales `.mp3` al `pubspec.yaml`
+- [x] Eliminar soporte viejo de Ringtone nativo (`jbh_ringtone`).
+- [x] Actualizar `SoundController` para que mapee dinámicamente según el segundo restante a los distintos MP3.
+- [x] Unificar la alarma chillona reproduciédose antes de "termino el tiempo".

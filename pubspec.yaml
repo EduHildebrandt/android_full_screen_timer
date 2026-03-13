@@ -14,7 +14,6 @@ dependencies:
   # Para reproducir sonidos del sistema sin requerir assets extra
   just_audio: ^0.9.42
   shared_preferences: ^2.5.4
-  jbh_ringtone: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +25,10 @@ flutter:
   assets:
     - assets/beep.wav
     - assets/alarm.wav
+    - assets/voice_10.mp3
+    - assets/voice_5.mp3
+    - assets/voice_4.mp3
+    - assets/voice_3.mp3
+    - assets/voice_2.mp3
+    - assets/voice_1.mp3
+    - assets/voice_termino.mp3
